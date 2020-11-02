@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="/css/currentweather.css">
+    <link rel="icon" href="/images/icon.jpg" type="image/gif" sizes="16x16">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <img src="/images/logo.png" alt="">
+            </div>
+            <div class="navbar">
+                <a href="/">Home</a>
+                <a href="/find">Find</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Current Weather
+                    </button>
+                    <div class="dropdown-content">
+                        <li><a href="/currentwind">Current Wind</a></li>
+                        <a href="/currentdetailedweather">Detailed Weather</a>
+                        <a href="/currentcity">City Details</a>
+                        <a href="/google">Geo Weather</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="result">
+            <% if(weather !== null){ %>
+            <p><%= weather %></p>
+            <% } %>
+        </div>
+    </header>
+    <div class="resultHeader">
+        <h3> Here are the results: </h3>
+    </div>
+    <div class="convert">
+        <h4> Want to convert the temperature to fahrenheit? </h4>
+        <p>
+            <br>
+            <label>Celsius: </label>
+            <input id="inputFahrenheit" type="number" placeholder="Celsius"
+                oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
+        </p>
+        <p class="celcius-label">Fahrenheit: <span id="outputCelcius"></span></p>
+        <script>
+            function temperatureConverter(valNum) {
+                valNum = parseFloat(valNum);
+                document.getElementById("outputCelcius").innerHTML = Math.round((valNum * 9/5) + 32);
+            }
+        </script>
+    </div>
+    <footer>
+        <p>Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script>, My Code</p>
+    </footer>
+</body>
+
+</html>
